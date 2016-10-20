@@ -2,7 +2,7 @@
 angular.module('magicShop')
     .component('loginView', {
         templateUrl: './app/components/templates/loginView.html',
-        controller: function(authorizationService) {
+        controller: function(authorizationService, $state) {
             var self = this;
             self.userparams = {
                 username: "",
@@ -10,8 +10,8 @@ angular.module('magicShop')
             };
             this.authorize = function(event) {
                 event.preventDefault();
-                authorizationService.authorize(self.userparams).then(function(users) {
-                    console.log(users);
+                authorizationService.authorize(self.userparams).then(function(user) {
+                    $state.go('home');
                 });
             }
         }
