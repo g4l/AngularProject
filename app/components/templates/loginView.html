@@ -1,0 +1,14 @@
+<div class="row">
+    <img src="vendor/img/Login.jpg" alt="Login image" class="img-responsive center-block">
+</div>
+<form class="login-group">
+    <div class="form-group">
+        <label for="exampleInputEmail1">User name</label>
+        <input type="text" class="form-control" ng-model="$ctrl.userparams.username" id="exampleInputEmail1" placeholder="Enter your username">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" ng-model="$ctrl.userparams.password" id="exampleInputPassword1" placeholder="Enter your password">
+    </div>
+    <button type="submit" class="btn btn-default" ng-click="$ctrl.authorize($event)">Login</button>
+</form>

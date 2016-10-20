@@ -1,5 +1,10 @@
 'use strict';
 angular.module('magicShop', ['ui.router'])
-    .component('wrapper', {
-        template: '<h1>Ye Olde Magick Shoppe</h1>'
+    .config(function($stateProvider, $urlRouterProvider) {
+        $stateProvider.state('login', {
+            template: '<login-view></login-view>',
+            url: '/login'
+        });
+
+        $urlRouterProvider.otherwise('login');
     });
