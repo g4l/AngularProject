@@ -1,0 +1,23 @@
+{
+  "name": "ye_olde_magick_shoppe",
+  "version": "1.0.0",
+  "description": "dosetrov@yahoo.com pet angular 1.5 pet project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iMafi/AngularProject.git"
+  },
+  "author": "dosetrov@yahoo.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iMafi/AngularProject/issues"
+  },
+  "homepage": "https://github.com/iMafi/AngularProject#readme",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-ui-router": "^0.3.1"
+  }
+}
