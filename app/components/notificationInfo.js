@@ -1,5 +1,5 @@
 'use strict';
-angular.module('magicShop')
+angular.module('manageBoard')
     .component('notificationInfo', {
         templateUrl: 'app/components/templates/notificationInfo.html'
     });

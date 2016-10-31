@@ -1,5 +1,5 @@
 'use strict';
-angular.module('magicShop', ['ui.router'])
+angular.module('manageBoard', ['ui.router'])
     .config(function($stateProvider, $urlRouterProvider) {
         var states = [
             {
@@ -25,6 +25,27 @@ angular.module('magicShop', ['ui.router'])
 
                         return deferred.promise;
                     }]
+                }
+            },
+            {
+                name: 'emails',
+                template: '<emails-box mailboxes="mailboxes"></emails-box>',
+                url: '/emails',
+                resolve: {
+                    mailboxes: ['emailService', function (emailService) {
+                        return emailService.getMailboxes();
+                    }]
+                },
+                controller: function (mailboxes, $scope) {
+                    $scope.mailboxes = mailboxes;
+                }
+            },
+            {
+                name: 'emails.box',
+                template: '{{boxId}}',
+                url: '/emails/:boxId',
+                controller: function($stateParams, $scope) {
+                    $scope.boxId = $stateParams.boxId;
                 }
             }
         ];

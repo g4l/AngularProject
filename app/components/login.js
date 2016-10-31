@@ -1,5 +1,5 @@
 'use strict';
-angular.module('magicShop')
+angular.module('manageBoard')
     .component('loginView', {
         templateUrl: './app/components/templates/loginView.html',
         controller: function(authorizationService, $state) {

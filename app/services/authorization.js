@@ -26,6 +26,6 @@ function authorizationService($http, $q) {
         });
     }
 }
-angular.module('magicShop')
+angular.module('manageBoard')
     .service('authorizationService', injections);
 })();

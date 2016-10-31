@@ -1,0 +1,13 @@
+<navigation-bar></navigation-bar>
+<div class="row">
+    <div class="col-lg-3">
+        <div class="list-group">
+            <a ng-repeat="mailbox in $ctrl.mailboxes"
+               ui-sref="emails.box({boxId: mailbox._id})"
+               class="list-group-item" ui-sref-active="active">{{mailbox.title}}</a>
+        </div>
+    </div>
+    <div class="col-lg-9">
+        <ui-view></ui-view>
+    </div>
+</div>

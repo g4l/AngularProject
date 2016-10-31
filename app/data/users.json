@@ -4,16 +4,6 @@
       "username": "user",
       "password": "user",
       "id": 1
-    },
-    {
-      "username": "warrior",
-      "password": "warrior",
-      "id": 2
-    },
-    {
-      "username": "mage",
-      "password": "mage",
-      "id": 3
     }
   ]
 }
