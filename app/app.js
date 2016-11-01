@@ -29,7 +29,7 @@ angular.module('manageBoard', ['ui.router'])
             },
             {
                 name: 'emails',
-                template: '<emails-box mailboxes="mailboxes"></emails-box>',
+                template: '<email-container mailboxes="mailboxes"></email-container>',
                 url: '/emails',
                 resolve: {
                     mailboxes: ['emailService', function (emailService) {
@@ -42,8 +42,8 @@ angular.module('manageBoard', ['ui.router'])
             },
             {
                 name: 'emails.box',
-                template: '{{boxId}}',
-                url: '/emails/:boxId',
+                template: '<email-list box-id="boxId"></email-list>',
+                url: '/:boxId',
                 controller: function($stateParams, $scope) {
                     $scope.boxId = $stateParams.boxId;
                 }

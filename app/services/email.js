@@ -7,7 +7,7 @@
         this.getEmails = () => {
             return $http.get("http://test-api.javascript.ru/v1/dosetrov/letters")
                     .then(response => response.data);
-        }
+        };
 
         this.getMailboxes = () => {
             return $http.get("http://test-api.javascript.ru/v1/dosetrov/mailboxes")
