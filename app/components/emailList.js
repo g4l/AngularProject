@@ -2,12 +2,7 @@
 angular.module('manageBoard')
     .component('emailList', {
         bindings: {
-            'boxId': '<'
+            'emails': '<'
         },
-        controller: function (emailService) {
-            emailService.getEmails().then(emails => {
-                this.emails = emails.filter(email => email.mailbox === this.boxId);
-                console.log(this.emails);
-            });
-        }
+        templateUrl: 'app/components/templates/emailList.html'
     });

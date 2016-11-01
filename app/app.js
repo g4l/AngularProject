@@ -3,7 +3,7 @@ angular.module('manageBoard', ['ui.router'])
     .config(function($stateProvider, $urlRouterProvider) {
         var states = [
             {
-                name: "login",
+                name: 'login',
                 template: '<login-view></login-view>',
                 url: '/login'
             },
@@ -42,11 +42,26 @@ angular.module('manageBoard', ['ui.router'])
             },
             {
                 name: 'emails.box',
-                template: '<email-list box-id="boxId"></email-list>',
+                template: '<email-list emails="emails"></email-list>',
                 url: '/:boxId',
-                controller: function($stateParams, $scope) {
-                    $scope.boxId = $stateParams.boxId;
+                controller: function($stateParams, $scope, emails) {
+                    $scope.emails = emails.filter(email => email.mailbox === $stateParams.boxId);
+                },
+                resolve: {
+                    emails: function(emailService) {
+                        return emailService.getEmails();
+                    }
                 }
+            },
+            {
+                "name": 'users',
+                "template": '<users-container></users-container>',
+                "url": '/users'
+            },
+            {
+                "name": 'todos',
+                "template": '<todos-container></todos-container>',
+                "url": '/todos'
             }
         ];
 
