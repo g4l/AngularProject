@@ -1,5 +1,5 @@
 {
-  "name": "ye_olde_magick_shoppe",
+  "name": "management_board",
   "version": "1.0.0",
   "description": "dosetrov@yahoo.com pet angular 1.5 pet project",
   "main": "index.js",
@@ -18,6 +18,6 @@
   "homepage": "https://github.com/iMafi/AngularProject#readme",
   "dependencies": {
     "angular": "^1.5.8",
-    "angular-ui-router": "^0.3.1"
+    "angular-ui-router": "^1.0.0-beta.3"
   }
 }

@@ -4,12 +4,12 @@ angular.module('manageBoard', ['ui.router'])
         var states = [
             {
                 name: 'login',
-                template: '<login-view></login-view>',
+                component: 'loginView',
                 url: '/login'
             },
             {
                 name: "home",
-                template: '<home-view></home-view>',
+                component: 'homeView',
                 url: '/home',
                 resolve: {
                     authorized: ['$q', 'authorizationService', '$log', function($q, authorizationService, $log) {
@@ -29,39 +29,34 @@ angular.module('manageBoard', ['ui.router'])
             },
             {
                 name: 'emails',
-                template: '<email-container mailboxes="mailboxes"></email-container>',
                 url: '/emails',
+                component: 'emailContainer',
                 resolve: {
                     mailboxes: ['emailService', function (emailService) {
                         return emailService.getMailboxes();
                     }]
-                },
-                controller: function (mailboxes, $scope) {
-                    $scope.mailboxes = mailboxes;
                 }
             },
             {
                 name: 'emails.box',
-                template: '<email-list emails="emails"></email-list>',
                 url: '/:boxId',
-                controller: function($stateParams, $scope, emails) {
-                    $scope.emails = emails.filter(email => email.mailbox === $stateParams.boxId);
-                },
+                component: 'emailList',
                 resolve: {
-                    emails: function(emailService) {
-                        return emailService.getEmails();
+                    emails: function(emailService, $stateParams) {
+                        return emailService.getEmails().then((emails) =>
+                                emails.filter((email) => email.mailbox === $stateParams.boxId));
                     }
                 }
             },
             {
-                "name": 'users',
-                "template": '<users-container></users-container>',
-                "url": '/users'
+                name: 'users',
+                component: 'usersContainer',
+                url: '/users'
             },
             {
-                "name": 'todos',
-                "template": '<todos-container></todos-container>',
-                "url": '/todos'
+                name: 'todos',
+                component: 'todosContainer',
+                url: '/todos'
             }
         ];
 
