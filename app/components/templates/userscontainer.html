@@ -1,2 +1,13 @@
 <navigation-bar></navigation-bar>
-<h1>Users Container Template</h1>
+<div class="row">
+    <div class="col-lg-3">
+        <div class="list-group">
+            <a ng-repeat="user in $ctrl.users"
+               ui-sref="users.detail({userId: user._id})"
+               class="list-group-item" ui-sref-active="active">{{user.fullName}}</a>
+        </div>
+    </div>
+    <div class="col-lg-9">
+        <ui-view>Select User!</ui-view>
+    </div>
+</div>

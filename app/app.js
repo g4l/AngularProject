@@ -54,6 +54,11 @@ angular.module('manageBoard', ['ui.router'])
                 url: '/users'
             },
             {
+                name: 'users.detail',
+                component: 'userDetail',
+                url: '/:userId'
+            },
+            {
                 name: 'todos',
                 component: 'todosContainer',
                 url: '/todos'
