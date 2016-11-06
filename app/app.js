@@ -1,5 +1,5 @@
 'use strict';
-angular.module('manageBoard', ['ui.router'])
+angular.module('manageBoard', ['ui.router', 'ngMessages'])
     .config(function($stateProvider, $urlRouterProvider) {
         var states = [
             {
@@ -54,9 +54,19 @@ angular.module('manageBoard', ['ui.router'])
                 url: '/users'
             },
             {
+                name: 'users.add',
+                component: 'userForm',
+                url: '/add'
+            },
+            {
                 name: 'users.detail',
                 component: 'userDetail',
                 url: '/:userId'
+            },
+            {
+                name: 'users.detail.edit',
+                component: 'userForm',
+                url: '/edit'
             },
             {
                 name: 'todos',

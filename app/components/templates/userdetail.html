@@ -1,6 +1,35 @@
-<p>{{$ctrl.user.fullName}}</p>
-<p>{{$ctrl.user.email}}</p>
-<p>{{$ctrl.user.birthdate}}</p>
-<p>{{$ctrl.user.gender}}</p>
-<p>{{$ctrl.user.address}}</p>
-<p>{{$ctrl.user.avatarUrl}}</p>
+<ui-view>
+    <h2>{{$ctrl.user.fullName}}</h2>
+    <div class="media margin-bottom">
+        <div class="media-left media-middle" ng-if="$ctrl.user.avatarUrl">
+            <img class="media-object userAvatar" ng-src="{{$ctrl.user.avatarUrl}}" alt="{{$ctrl.user.fullName}}" title="{{$ctrl.user.fullName}}">
+        </div>
+        <div class="media-body">
+            <div class="row">
+                <div class="col-lg-2">Email: </div>
+                <div class="col-lg-10">{{$ctrl.user.email}}</div>
+            </div>
+            <div class="row" ng-if="$ctrl.user.address">
+                <div class="col-lg-2">Address: </div>
+                <div class="col-lg-10">{{$ctrl.user.address}}</div>
+            </div>
+            <div class="row" ng-if="$ctrl.user.gender">
+                <div class="col-lg-2">Gender: </div>
+                <div class="col-lg-10">{{$ctrl.user.gender}}</div>
+            </div>
+            <div class="row" ng-if="$ctrl.user.birthdate">
+                <div class="col-lg-2">Date of birth: </div>
+                <div class="col-lg-10">{{$ctrl.user.birthdate | date: 'mediumDate'}}</div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-default">
+        <span class="glyphicon glyphicon-envelope"></span> Message
+    </button>
+    <button class="btn-default btn" ui-sref=".edit">
+        <span class="glyphicon glyphicon-pencil"></span> Edit User
+    </button>
+    <button class="btn btn-default" ng-click="$ctrl.deleteUser()">
+        <span class="glyphicon glyphicon-remove-sign"></span> Delete User
+    </button>
+</ui-view>

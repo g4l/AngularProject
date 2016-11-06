@@ -2,3 +2,12 @@
     margin-left: 25%;
     width: 50%;
 }
+
+.margin-bottom {
+    margin-bottom: 15px;
+}
+
+.userAvatar {
+    width: 128px;
+    height: 128px;
+}

@@ -14,6 +14,14 @@
         this.addUser = (user) => {
             return $http.post('http://test-api.javascript.ru/v1/dosetrov/users', user);
         }
+
+        this.editUser = (user) => {
+            return $http.patch('http://test-api.javascript.ru/v1/dosetrov/users/' + user._id, user);
+        }
+
+        this.deleteUser = (userId) => {
+            return $http.delete('http://test-api.javascript.ru/v1/dosetrov/users/' + userId);
+        }
     }
 
     angular.module('manageBoard').service('usersService', injections);

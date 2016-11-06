@@ -1,6 +1,8 @@
 <navigation-bar></navigation-bar>
 <div class="row">
     <div class="col-lg-3">
+        <button class="btn btn-default btn-block margin-bottom" ui-sref="users.add()">
+            <span class="glyphicon glyphicon-plus-sign pull-left"></span>Add user</button>
         <div class="list-group">
             <a ng-repeat="user in $ctrl.users"
                ui-sref="users.detail({userId: user._id})"
@@ -9,7 +11,7 @@
     </div>
     <div class="col-lg-9">
         <ui-view>
-            <user-form mode="Add User"></user-form>
+            <h1>Select a contact</h1>
         </ui-view>
     </div>
 </div>
