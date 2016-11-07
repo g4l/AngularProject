@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-lg-8">
+        <h4 class="text-center">Todo title</h4>
+    </div>
+    <div class="col-lg-2">
+        <h4 class="text-center">Assignee</h4>
+    </div>
+    <div class="col-lg-2">
+        <h4 class="text-center">Urgency Class</h4>
+    </div>
+</div>
+<form novalidate name="$ctrl.todoform" ng-submit="$ctrl.addTodo()">
+    <div class="form-group col-lg-8" ng-class="{'has-error': $ctrl.todoform.todoTitle.$error.required && $ctrl.todoform.todoTitle.$touched}">
+        <input type="text" required ng-model="$ctrl.newTodo.title" name="todoTitle" class="form-control" placeholder="Write todo title here">
+        <span class="help-block" ng-messages="$ctrl.todoform.todoTitle.$error" ng-if="$ctrl.todoform.todoTitle.$error.required && $ctrl.todoform.todoTitle.$touched">
+            <p ng-message="required">Todo title is required!</p>
+        </span>
+    </div>
+    <div class="form-group col-lg-2">
+        <select class="form-control" required ng-model="$ctrl.newTodo.assignee"
+            ng-options="user.fullName for user in $ctrl.users"></select>
+    </div>
+    <div class="form-group col-lg-2">
+        <select class="form-control" ng-model="$ctrl.newTodo.urgency"
+            ng-options="urgency for urgency in $ctrl.urgencyCategories"></select>
+    </div>
+    <button ng-disabled="$ctrl.todoform.$invalid" type="submit" class="btn btn-default">Add todo</button>
+</form>
