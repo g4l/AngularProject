@@ -11,3 +11,7 @@
     width: 128px;
     height: 128px;
 }
+
+.completed-todo {
+    text-decoration: line-through;
+}

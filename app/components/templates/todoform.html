@@ -9,7 +9,7 @@
         <h4 class="text-center">Urgency Class</h4>
     </div>
 </div>
-<form novalidate name="$ctrl.todoform" ng-submit="$ctrl.addTodo()">
+<form novalidate name="$ctrl.todoform" ng-submit="$ctrl.addTodo()" class="margin-bottom">
     <div class="form-group col-lg-8" ng-class="{'has-error': $ctrl.todoform.todoTitle.$error.required && $ctrl.todoform.todoTitle.$touched}">
         <input type="text" required ng-model="$ctrl.newTodo.title" name="todoTitle" class="form-control" placeholder="Write todo title here">
         <span class="help-block" ng-messages="$ctrl.todoform.todoTitle.$error" ng-if="$ctrl.todoform.todoTitle.$error.required && $ctrl.todoform.todoTitle.$touched">

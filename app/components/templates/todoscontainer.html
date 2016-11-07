@@ -1,4 +1,6 @@
 <navigation-bar></navigation-bar>
 <h2 class="text-center">Add a Todo</h2>
 <todo-form></todo-form>
-<todo-item ng-repeat="todo in $ctrl.todos" todo="todo"></todo-item>
+<ul class="list-group col-lg-9">
+    <todo-item ng-repeat="todo in $ctrl.todos" todo="todo"></todo-item>
+</ul>

@@ -1,1 +1,13 @@
-{{$ctrl.todo.title}}<br/>
+<li class="list-group-item">
+    <div class="row">
+        <div class="col-lg-8">
+            <h6 ng-class="{'completed-todo': $ctrl.completed}" ng-if="!$ctrl.showEdit">{{$ctrl.todo.title}}</h6>
+            <input class="form-control" ng-if="$ctrl.showEdit" ng-model="$ctrl.todo.title">
+        </div>
+        <div class="col-lg-4">
+            <button class="btn btn-default" ng-click="$ctrl.editTodo()" ng-if="$ctrl.showEdit"><span class="glyphicon glyphicon-ok-circle"></span></button>
+            <button class="btn btn-default" ng-click="$ctrl.enableEdit()" ng-if="!$ctrl.completed"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
+            <button class="btn btn-default" ng-click="$ctrl.deleteTodo()" ng-if="!$ctrl.completed"><span class="glyphicon glyphicon-remove-circle"></span> Complete</button>
+        </div>
+    </div>
+</li>
