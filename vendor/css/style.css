@@ -15,3 +15,7 @@
 .completed-todo {
     text-decoration: line-through;
 }
+
+.cursor {
+    cursor: pointer;
+}

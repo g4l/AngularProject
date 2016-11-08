@@ -1,1 +1,38 @@
-<h1>Hello From Email Form</h1>
+<form novalidate name="$ctrl.emailForm" class="form-horizontal">
+    <div class="form-group" ng-class="{'has-error': $ctrl.hasError('subject')}">
+        <label for="emailSubject" class="col-sm-2 control-label">Subject </label>
+        <div class="col-sm-10">
+            <input type="text" name="emailSubject" required ng-model="$ctrl.currentEmail.subject" class="form-control" id="emailSubject" placeholder="Enter subject">
+            <span class="help-block" ng-messages="$ctrl.emailForm.emailSubject.$error" ng-if="$ctrl.emailForm.emailSubject.$touched">
+            <p ng-message="required">Subject is required!</p>
+        </span>
+        </div>
+    </div>
+    <div class="form-group" ng-class="{'has-error': $ctrl.hasError('email')}">
+        <label for="email" class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-10">
+            <input type="email" name="email" required ng-model="$ctrl.currentEmail.to" class="form-control" id="email" placeholder="Email">
+            <span class="help-block" ng-messages="$ctrl.emailForm.email.$error" ng-if="$ctrl.emailForm.email.$touched">
+                <p ng-message="required">Email is required</p>
+                <p ng-message="email">You have to enter valid email!</p>
+            </span>
+        </div>
+    </div>
+    <div class="form-group" ng-class="{'has-error': $ctrl.hasError('body')}">
+        <label for="emailBody" class="col-sm-2 control-label">Body</label>
+        <div class="col-sm-10">
+            <textarea required class="form-control" rows="10" name="body" ng-model="$ctrl.currentEmail.body" id="emailBody"></textarea>
+            <span class="help-block" ng-messages="$ctrl.emailForm.body.$error" ng-if="$ctrl.emailForm.body.$touched">
+                <p ng-message="required">Email text is required</p>
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-lg-2">
+            <input type="submit" ng-disabled="$ctrl.emailForm.$invalid" class="btn btn-default" value="Send Email" ng-click="$ctrl.sendEmail($event)">
+        </div>
+        <div class="col-lg-2">
+            <button class="btn btn-default" ng-disabled="$ctrl.emailForm.$invalid" ng-click="$ctrl.saveDraft($event)">Save as Draft</button>
+        </div>
+    </div>
+</form>

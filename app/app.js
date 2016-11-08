@@ -54,6 +54,11 @@ angular.module('manageBoard', ['ui.router', 'ngMessages'])
                 }
             },
             {
+                name: 'emails.box.letter',
+                url: '/:letterId',
+                component: 'emailLetter'
+            },
+            {
                 name: 'users',
                 component: 'usersContainer',
                 url: '/users'

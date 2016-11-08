@@ -9,11 +9,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="email in $ctrl.emails">
+                <tr ui-sref=".letter({letterId: email._id})" class="cursor" ng-repeat="email in $ctrl.emails">
                     <td>{{email.to}}</td>
                     <td>{{email.subject}}</td>
                 </tr>
             </tbody>
         </table>
     </div>
+    <ui-view></ui-view>
 </div>
