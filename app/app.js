@@ -38,6 +38,11 @@ angular.module('manageBoard', ['ui.router', 'ngMessages'])
                 }
             },
             {
+                name: 'emails.new',
+                url: '/new',
+                component: 'emailForm'
+            },
+            {
                 name: 'emails.box',
                 url: '/:boxId',
                 component: 'emailList',

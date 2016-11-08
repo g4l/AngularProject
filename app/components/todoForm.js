@@ -2,7 +2,7 @@
 angular.module('manageBoard')
     .component('todoForm', {
         templateUrl: 'app/components/templates/todoform.html',
-        controller: function(usersService, todosService) {
+        controller: function(usersService, todosService, emailService) {
             this.$onInit = () => {
                 this.newTodo = {};
                 usersService.getUsers().then(users => {
@@ -21,14 +21,29 @@ angular.module('manageBoard')
                         class: this.newTodo.urgency
                     }]
                 };
+                console.log(this.sendRemainder);
 
                 todosService.addTodo(todo).then(data => {
-                    console.log(data);
                     this.todoform.$setUntouched();
-                    this.newTodo = {
-                        assignee: this.users[0],
-                        urgency: this.urgencyCategories[2]
-                    };
+
+                    if (this.sendRemainder) {
+                        let email = {
+                            mailbox: "582064819de15a250410ecb3",
+                            to: "me@example.com",
+                            subject: this.newTodo.urgency + " todo added for user " + this.newTodo.assignee.fullName,
+                            body: "asdfasdghfdh"
+                        };
+                        this.newTodo = {
+                            assignee: this.users[0],
+                            urgency: this.urgencyCategories[2]
+                        };
+                        emailService.sendEmail(email).then(res => console.log(res));
+                    } else {
+                        this.newTodo = {
+                            assignee: this.users[0],
+                            urgency: this.urgencyCategories[2]
+                        };
+                    }
                 });
             }
         }

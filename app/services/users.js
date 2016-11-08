@@ -3,24 +3,26 @@
     var injections = ['$http', usersService];
 
     function usersService($http) {
+        let baseUrl = 'http://test-api.javascript.ru/v1/dosetrov/users/';
+
         this.getUsers = () => {
-            return $http.get('http://test-api.javascript.ru/v1/dosetrov/users').then(response => response.data);
+            return $http.get(baseUrl).then(response => response.data);
         };
 
         this.getUser =  (userId) => {
-            return $http.get('http://test-api.javascript.ru/v1/dosetrov/users/' + userId).then(resp => resp.data);
+            return $http.get(baseUrl + userId).then(resp => resp.data);
         };
 
         this.addUser = (user) => {
-            return $http.post('http://test-api.javascript.ru/v1/dosetrov/users', user);
+            return $http.post(baseUrl, user);
         }
 
         this.editUser = (user) => {
-            return $http.patch('http://test-api.javascript.ru/v1/dosetrov/users/' + user._id, user);
+            return $http.patch(baseUrl + user._id, user);
         }
 
         this.deleteUser = (userId) => {
-            return $http.delete('http://test-api.javascript.ru/v1/dosetrov/users/' + userId);
+            return $http.delete(baseUrl + userId);
         }
     }
 

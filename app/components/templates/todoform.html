@@ -24,5 +24,11 @@
         <select class="form-control" ng-model="$ctrl.newTodo.urgency"
             ng-options="urgency for urgency in $ctrl.urgencyCategories"></select>
     </div>
-    <button ng-disabled="$ctrl.todoform.$invalid" type="submit" class="btn btn-default">Add todo</button>
+    <div class="form-group col-lg-12">
+        <div class="checkbox">
+            <input type="checkbox" ng-model="$ctrl.sendRemainder"> Send email as a remainder?
+        </div>
+        <button ng-disabled="$ctrl.todoform.$invalid" type="submit" class="btn btn-default">Add todo</button>
+    </div>
+
 </form>

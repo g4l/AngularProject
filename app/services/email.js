@@ -4,14 +4,20 @@
     var injections = ['$http', emailService];
 
     function emailService($http) {
+        let baseUrlLetters = "http://test-api.javascript.ru/v1/dosetrov/letters";
+        let baseUrlMailboxes = "http://test-api.javascript.ru/v1/dosetrov/mailboxes";
         this.getEmails = () => {
-            return $http.get("http://test-api.javascript.ru/v1/dosetrov/letters")
+            return $http.get(baseUrlLetters)
                     .then(response => response.data);
         };
 
         this.getMailboxes = () => {
-            return $http.get("http://test-api.javascript.ru/v1/dosetrov/mailboxes")
+            return $http.get(baseUrlMailboxes)
                     .then(response => response.data);
+        }
+
+        this.sendEmail = (email) => {
+            return $http.post(baseUrlLetters, email);
         }
     }
 
