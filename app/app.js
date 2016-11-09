@@ -11,20 +11,8 @@ angular.module('manageBoard', ['ui.router', 'ngMessages'])
                 name: "home",
                 component: 'homeView',
                 url: '/home',
-                resolve: {
-                    authorized: ['$q', 'authorizationService', '$log', function($q, authorizationService, $log) {
-                        var deferred = $q.defer();
-                        authorizationService.isAuthorized().then(function(isAuthorized) {
-                            if (isAuthorized) {
-                                deferred.resolve();
-                            } else {
-                                $log.debug(deferred);
-                                deferred.reject("Login error! Please Try again");
-                            }
-                        });
-
-                        return deferred.promise;
-                    }]
+                data: {
+                    authRequired: true
                 }
             },
             {
@@ -35,6 +23,9 @@ angular.module('manageBoard', ['ui.router', 'ngMessages'])
                     mailboxes: ['emailService', function (emailService) {
                         return emailService.getMailboxes();
                     }]
+                },
+                data: {
+                    authRequired: true
                 }
             },
             {
@@ -61,7 +52,10 @@ angular.module('manageBoard', ['ui.router', 'ngMessages'])
             {
                 name: 'users',
                 component: 'usersContainer',
-                url: '/users'
+                url: '/users',
+                data: {
+                    authRequired: true
+                }
             },
             {
                 name: 'users.add',
@@ -81,7 +75,10 @@ angular.module('manageBoard', ['ui.router', 'ngMessages'])
             {
                 name: 'todos',
                 component: 'todosContainer',
-                url: '/todos'
+                url: '/todos',
+                data: {
+                    authRequired: true
+                }
             }
         ];
 
@@ -89,10 +86,17 @@ angular.module('manageBoard', ['ui.router', 'ngMessages'])
 
         $urlRouterProvider.otherwise('login');
     })
-    .run(function($rootScope, $log, $state) {
-        $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
-            $log.error(error);
-            alert(error);
-            $state.go('login');
+    .run(function($transitions) {
+        $transitions.onStart({
+            to: function(state) {
+                return state.data != null && state.data.authRequired === true;
+            }
+        }, function(trans) {
+            var auth = trans.injector().get('authorizationService');
+            return auth.isAuthorized().then(auth => {
+                if (!auth) {
+                    return trans.router.stateService.target('login');
+                }
+            });
         });
     });

@@ -7,6 +7,14 @@
     margin-bottom: 15px;
 }
 
+.margin-right {
+    margin-right: 50px;
+}
+
+.margin-left {
+    margin-left: 15px;
+}
+
 .userAvatar {
     width: 128px;
     height: 128px;

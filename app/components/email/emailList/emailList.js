@@ -4,5 +4,5 @@ angular.module('manageBoard')
         bindings: {
             'emails': '<'
         },
-        templateUrl: 'app/components/templates/emailList.html'
+        templateUrl: 'app/components/email/emailList/emailList.html'
     });

@@ -1,7 +1,7 @@
 'use strict';
 angular.module('manageBoard')
     .component('userForm', {
-        templateUrl: 'app/components/templates/userform.html',
+        templateUrl: 'app/components/users/userForm/userform.html',
         controller: function(usersService, $stateParams, $state) {
             this.$onInit = () => {
                 if ($stateParams.userId) {
@@ -29,7 +29,7 @@ angular.module('manageBoard')
                         }));
                     }
                 }
-            }
+            };
 
             this.hasError = (inputName) => {
                 switch (inputName) {

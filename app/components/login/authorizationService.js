@@ -22,8 +22,12 @@ function authorizationService($http, $q) {
             );
 
             if (result.length) authorized = true;
-            return result;
+            return authorized;
         });
+    };
+
+    this.logout = () => {
+        authorized = false;
     }
 }
 angular.module('manageBoard')

@@ -1,7 +1,7 @@
 'use strict';
 angular.module('manageBoard')
     .component('todoForm', {
-        templateUrl: 'app/components/templates/todoform.html',
+        templateUrl: 'app/components/todos/todoForm/todoform.html',
         controller: function(usersService, todosService, emailService) {
             this.$onInit = () => {
                 this.newTodo = {};
@@ -31,7 +31,7 @@ angular.module('manageBoard')
                             mailbox: "582064819de15a250410ecb3",
                             to: "me@example.com",
                             subject: this.newTodo.urgency + " todo added for user " + this.newTodo.assignee.fullName,
-                            body: "asdfasdghfdh"
+                            body: `New ${this.newTodo.urgency} todo was added for user ${this.newTodo.assignee.fullName}. The task is: ${this.newTodo.title}`
                         };
                         this.newTodo = {
                             assignee: this.users[0],

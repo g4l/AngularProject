@@ -1,0 +1,22 @@
+<nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <li ui-sref-active="active" ng-repeat="nav in $ctrl.navs">
+                <a ui-sref="{{nav}}">{{nav}}</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right margin-right">
+            <li>
+                <button ui-sref="emails.new" type="button" class="btn btn-default navbar-btn">
+                    <span class="glyphicon glyphicon-envelope"></span> Write Message
+                </button>
+            </li>
+            <li class="margin-left">
+                <button type="button" class="btn btn-default navbar-btn" ng-click="$ctrl.logout()">
+                    <span class="glyphicon glyphicon-log-out"></span> Logout
+                </button>
+            </li>
+        </ul>
+    </div>
+
+</nav>

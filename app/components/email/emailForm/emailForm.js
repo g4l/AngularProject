@@ -1,7 +1,7 @@
 'use strict';
 angular.module('manageBoard')
     .component('emailForm', {
-        templateUrl: 'app/components/templates/emailForm.html',
+        templateUrl: 'app/components/email/emailForm/emailForm.html',
         controller: function(emailService) {
 
             this.hasError = (input) => {
@@ -13,21 +13,21 @@ angular.module('manageBoard')
                     case 'body':
                         return this.emailForm.body.$error.required && this.emailForm.body.$touched;
                 }
-            }
+            };
 
             this.sendEmail = (e) => {
                 e.stopPropagation();
                 this.currentEmail.mailbox = "582064709de15a250410ecb1";
-                emailService.sendEmail(this.currentEmail).then(res => {
+                emailService.sendEmail(this.currentEmail).then(() => {
                     this.currentEmail = {};
                     this.emailForm.$setUntouched();
                 });
-            }
+            };
 
             this.saveDraft = (e) => {
                 e.stopPropagation();
                 this.currentEmail.mailbox = "582064789de15a250410ecb2";
-                emailService.sendEmail(this.currentEmail).then(res => {
+                emailService.sendEmail(this.currentEmail).then(() => {
                     this.currentEmail = {};
                     this.emailForm.$setUntouched();
                 });

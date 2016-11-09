@@ -4,7 +4,7 @@ angular.module('manageBoard')
         bindings: {
             todo: '<'
         },
-        templateUrl: 'app/components/templates/todoitem.html',
+        templateUrl: 'app/components/todos/todoItem/todoitem.html',
         controller: function(todosService) {
             this.showEdit = false;
             this.completed = false;
