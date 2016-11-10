@@ -7,4 +7,4 @@ npm install
 ```
 I use http-server installed locally
 so run
-`npm start` or just `http-server` if it's already installed globally
+```npm start``` or just ```http-server``` if it's already installed globally
