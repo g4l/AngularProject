@@ -99,4 +99,15 @@ angular.module('manageBoard', ['ui.router', 'ngMessages'])
                 }
             });
         });
+
+        $transitions.onStart({
+            to: 'login'
+        }, function(trans) {
+            var auth = trans.injector().get('authorizationService');
+            return auth.isAuthorized().then(auth => {
+                if (auth) {
+                    return trans.router.stateService.target('home');
+                }
+            });
+        });
     });
